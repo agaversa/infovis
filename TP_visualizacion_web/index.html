@@ -194,9 +194,9 @@
 
     <p>
       Una exploración de cómo se distribuyen los consumos
-      por categoría, cómo evolucionan a lo largo del tiempo
-      y qué importes predominan en las compras realizadas
-      con Visa y Mastercard.
+      por categoría, cómo evolucionan a lo largo del tiempo,
+      qué importes predominan en las compras y qué días
+      concentran los mayores gastos con Visa y Mastercard.
     </p>
 
     <div class="pills">
@@ -205,6 +205,7 @@
       <span class="pill">RAWGraphs</span>
       <span class="pill">Flourish</span>
       <span class="pill">Datawrapper</span>
+      <span class="pill">Tableau</span>
     </div>
   </div>
 </header>
@@ -222,11 +223,11 @@
       El análisis parte de movimientos extraídos de resúmenes
       de tarjetas de crédito. Se organizaron los registros,
       se revisaron manualmente las categorías de los comercios
-      y se construyeron visualizaciones para responder tres
+      y se construyeron visualizaciones para responder cuatro
       preguntas: ¿en qué rubros se concentra el gasto?,
       ¿cómo varían los consumos de cada tarjeta a lo largo
-      de los meses? y ¿qué importes son más frecuentes
-      en las compras?
+      de los meses?, ¿qué importes son más frecuentes
+      en las compras? y ¿qué días concentran los mayores gastos?
     </p>
 
     <div class="cards">
@@ -241,8 +242,8 @@
       </div>
 
       <div class="mini">
-        <strong>3 visualizaciones</strong>
-        <span>Distribución, evolución y frecuencia</span>
+        <strong>4 visualizaciones</strong>
+        <span>Distribución, evolución, frecuencia y calendario</span>
       </div>
     </div>
   </section>
@@ -378,10 +379,73 @@
     </p>
   </section>
 
-  <!-- 05. HALLAZGOS Y LIMITACIONES -->
+  <!-- 05. TABLEAU -->
+
+  <section class="panel" id="calendario">
+    <div class="tag">05 / Tableau · Heatmap</div>
+
+    <h2>¿Qué días concentran mis mayores gastos?</h2>
+
+    <p class="lead">
+      Este calendario interactivo muestra los gastos diarios
+      realizados con Visa y Mastercard en pesos argentinos.
+      La intensidad del color representa el importe total
+      registrado en cada día. El filtro permite seleccionar
+      distintos meses y comparar los patrones de consumo.
+    </p>
+
+    <div class="chart">
+      <div
+        class="tableauPlaceholder"
+        id="viz1794668159823"
+        style="position:relative">
+
+        <noscript>
+          <a href="https://public.tableau.com/views/shared/SBJ5CSBMY">
+            Ver el calendario de gastos diarios en Tableau Public
+          </a>
+        </noscript>
+
+        <object class="tableauViz" style="display:none;">
+          <param name="host_url"
+                 value="https%3A%2F%2Fpublic.tableau.com%2F" />
+          <param name="embed_code_version" value="3" />
+          <param name="path" value="shared/SBJ5CSBMY" />
+          <param name="toolbar" value="yes" />
+          <param name="static_image"
+                 value="https://public.tableau.com/static/images/SB/SBJ5CSBMY/1.png" />
+          <param name="animate_transition" value="yes" />
+          <param name="display_static_image" value="yes" />
+          <param name="display_spinner" value="yes" />
+          <param name="display_overlay" value="yes" />
+          <param name="display_count" value="yes" />
+          <param name="language" value="es-ES" />
+          <param name="filter" value="publish=yes" />
+        </object>
+      </div>
+    </div>
+
+    <p class="chart-note">
+      Fuente: consumos de tarjetas de crédito procesados.
+      Herramienta: Tableau Public. Solo importes en ARS.
+      Los espacios sin color indican fechas sin transacciones
+      registradas en los datos disponibles.
+    </p>
+
+    <h3>Lectura del gráfico</h3>
+
+    <p>
+      Los días más oscuros representan mayores importes
+      de consumo. El calendario permite identificar
+      concentraciones de gastos y explorar diferencias
+      entre los meses mediante el filtro interactivo.
+    </p>
+  </section>
+
+  <!-- 06. HALLAZGOS Y LIMITACIONES -->
 
   <section class="panel" id="conclusiones">
-    <div class="tag">05 / Hallazgos y limitaciones</div>
+    <div class="tag">06 / Hallazgos y limitaciones</div>
 
     <h2>¿Qué nos muestran los datos?</h2>
 
@@ -411,6 +475,13 @@
         el 77,2% de las transacciones en ARS tiene
         importes inferiores a $50.000.
       </li>
+
+      <li>
+        <strong>Distribución diaria:</strong>
+        el calendario permite identificar los días
+        de mayor gasto y explorar cómo cambia
+        la concentración de consumos entre meses.
+      </li>
     </ul>
 
     <h3>Cómo interpretar los resultados</h3>
@@ -438,13 +509,14 @@
 <footer>
   <div class="wrap">
     Trabajo práctico de Visualización de la Información ·
-    Visualizaciones realizadas con RAWGraphs, Flourish
-    y Datawrapper · Datos personales de transacciones
-    no publicados en esta página.
+    Visualizaciones realizadas con RAWGraphs, Flourish,
+    Datawrapper y Tableau · Datos personales de transacciones
+    no publicados directamente en esta página.
   </div>
 </footer>
 
 <!-- Ajuste automático de altura de Datawrapper -->
+
 <script>
   window.addEventListener("message", function(event) {
     if (
@@ -463,6 +535,24 @@
       }
     }
   });
+</script>
+
+<!-- Carga del gráfico de Tableau Public -->
+
+<script type="text/javascript">
+  (function () {
+    var container = document.getElementById("viz1794668159823");
+    var viz = container.getElementsByTagName("object")[0];
+
+    viz.style.width = "100%";
+    viz.style.height = "700px";
+
+    var script = document.createElement("script");
+    script.src =
+      "https://public.tableau.com/javascripts/api/viz_v1.js";
+
+    viz.parentNode.insertBefore(script, viz);
+  })();
 </script>
 
 </body>
